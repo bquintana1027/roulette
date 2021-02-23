@@ -18,7 +18,6 @@ import java.util.Date;
     entities = {Spin.class, Wager.class},
     version = 1
 )
-
 @TypeConverters(value = {Converters.class, Color.class})
 public abstract class RouletteDatabase extends RoomDatabase {
 
@@ -26,7 +25,7 @@ public abstract class RouletteDatabase extends RoomDatabase {
 
   private static Application context;
 
-  public static void setContext (Application context) {
+  public static void setContext(Application context) {
     RouletteDatabase.context = context;
   }
 
@@ -42,12 +41,11 @@ public abstract class RouletteDatabase extends RoomDatabase {
 
     private static final RouletteDatabase INSTANCE =
         Room.databaseBuilder(context, RouletteDatabase.class, DB_NAME)
-          .build();
+            .build();
 
   }
 
   public static class Converters {
-
 
     @TypeConverter
     public static Long dateToLong(Date value) {
@@ -55,10 +53,10 @@ public abstract class RouletteDatabase extends RoomDatabase {
     }
 
     @TypeConverter
-    public static Date longtoDate (Long value) {
-      return (value !=null) ? new Date (value) : null;
+    public static Date longToDate(Long value) {
+      return (value != null) ? new Date(value) : null;
     }
 
-    }
   }
 
+}
