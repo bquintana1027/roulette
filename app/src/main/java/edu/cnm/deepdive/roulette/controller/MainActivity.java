@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
 
   private AppBarConfiguration appBarConfiguration;
   private NavController navController;
-  private NavController navController1;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
     appBarConfiguration = new AppBarConfiguration.Builder(
         R.id.navigation_play, R.id.navigation_dashboard, R.id.navigation_notifications)
         .build();
-    navController1 = Navigation.findNavController(this, R.id.nav_host_fragment);
-    NavigationUI.setupActionBarWithNavController(this, navController1, appBarConfiguration);
-    NavigationUI.setupWithNavController(navView, navController1);
+    navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+    NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
+    NavigationUI.setupWithNavController(navView, navController);
   }
 
   @Override
