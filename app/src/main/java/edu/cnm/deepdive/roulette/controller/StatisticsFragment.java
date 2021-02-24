@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import edu.cnm.deepdive.roulette.adapter.ValueCountAdapter;
 import edu.cnm.deepdive.roulette.databinding.FragmentStatisticsBinding;
 import edu.cnm.deepdive.roulette.model.view.ValueCount;
 import edu.cnm.deepdive.roulette.viewmodel.StatisticsViewModel;
@@ -20,7 +21,7 @@ public class StatisticsFragment extends Fragment {
 
   public View onCreateView(@NonNull LayoutInflater inflater,
       ViewGroup container, Bundle savedInstanceState) {
-    binding = FragmentStatisticsBinding.inflate(inflater, container,false);
+    binding = FragmentStatisticsBinding.inflate(inflater, container, false);
     return binding.getRoot();
   }
 
@@ -29,8 +30,8 @@ public class StatisticsFragment extends Fragment {
     super.onViewCreated(view, savedInstanceState);
     statisticsViewModel = new ViewModelProvider(this).get(StatisticsViewModel.class);
     statisticsViewModel.getCounts().observe(getViewLifecycleOwner(), (counts) -> {
-      ArrayAdapter<ValueCount> adapter =
-          new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, counts);
+      //noinspection ConstantConditions
+      ValueCountAdapter adapter = new ValueCountAdapter(getContext(), counts);
       binding.countsList.setAdapter(adapter);
     });
   }
