@@ -41,7 +41,7 @@ public class PlayFragment extends Fragment {
       ViewGroup container, Bundle savedInstanceState) {
     binding = FragmentPlayBinding.inflate(inflater, container, false);
     binding.spinWheel.setOnClickListener((v) -> spinWheel());
-    binding.placeWager.setOnClickListener((v)->{
+    binding.placeWager.setOnClickListener((v) -> {
       Navigation.findNavController(binding.getRoot())
           .navigate(PlayFragmentDirections.actionNavigationPlayToNavigationWager());
     });
@@ -64,6 +64,13 @@ public class PlayFragment extends Fragment {
             BaseTransientBottomBar.LENGTH_INDEFINITE).show();
       }
     });
+  }
+
+  @Override
+  public void onStop() {
+    binding.rouletteWheel.clearAnimation();
+    super.onStop();
+
   }
 
   private void spinWheel() {
